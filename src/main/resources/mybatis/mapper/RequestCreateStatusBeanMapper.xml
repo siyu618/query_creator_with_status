@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.query_creator.dao.RequestCreateStatusBeanMapper">
+  <resultMap id="BaseResultMap" type="com.study.query_creator.model.RequestCreateStatusBean">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="request_id" jdbcType="VARCHAR" property="requestId" />
+    <result column="request_type" jdbcType="VARCHAR" property="requestType" />
+    <result column="request_status" jdbcType="INTEGER" property="requestStatus" />
+    <result column="request_url" jdbcType="VARCHAR" property="requestUrl" />
+    <result column="request_post_data" jdbcType="VARCHAR" property="requestPostData" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+    <result column="retry_times" jdbcType="INTEGER" property="retryTimes" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, request_id, request_type, request_status, request_url, request_post_data, detail, 
+    retry_times, create_time, last_update_time
+  </sql>
+  <select id="getRequestByStatus" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from request_create_status
+    where request_status = #{request_status,jdbcType=INTEGER}
+  </select>
+  <select id="getRequestByTypeAndStatus" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from request_create_status
+    where request_type = #{request_type,jdbcType=VARCHAR} and request_status = #{request_status,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from request_create_status
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from request_create_status
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.study.query_creator.model.RequestCreateStatusBean">
+    insert into request_create_status (id, request_id, request_type, 
+      request_status, request_url, request_post_data, 
+      detail, retry_times, create_time, 
+      last_update_time)
+    values (#{id,jdbcType=INTEGER}, #{requestId,jdbcType=VARCHAR}, #{requestType,jdbcType=VARCHAR}, 
+      #{requestStatus,jdbcType=INTEGER}, #{requestUrl,jdbcType=VARCHAR}, #{requestPostData,jdbcType=VARCHAR}, 
+      #{detail,jdbcType=VARCHAR}, #{retryTimes,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.query_creator.model.RequestCreateStatusBean">
+    insert into request_create_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="requestId != null">
+        request_id,
+      </if>
+      <if test="requestType != null">
+        request_type,
+      </if>
+      <if test="requestStatus != null">
+        request_status,
+      </if>
+      <if test="requestUrl != null">
+        request_url,
+      </if>
+      <if test="requestPostData != null">
+        request_post_data,
+      </if>
+      <if test="detail != null">
+        detail,
+      </if>
+      <if test="retryTimes != null">
+        retry_times,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="requestId != null">
+        #{requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestType != null">
+        #{requestType,jdbcType=VARCHAR},
+      </if>
+      <if test="requestStatus != null">
+        #{requestStatus,jdbcType=INTEGER},
+      </if>
+      <if test="requestUrl != null">
+        #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="requestPostData != null">
+        #{requestPostData,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="retryTimes != null">
+        #{retryTimes,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.query_creator.model.RequestCreateStatusBean">
+    update request_create_status
+    <set>
+      <if test="requestId != null">
+        request_id = #{requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestType != null">
+        request_type = #{requestType,jdbcType=VARCHAR},
+      </if>
+      <if test="requestStatus != null">
+        request_status = #{requestStatus,jdbcType=INTEGER},
+      </if>
+      <if test="requestUrl != null">
+        request_url = #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="requestPostData != null">
+        request_post_data = #{requestPostData,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="retryTimes != null">
+        retry_times = #{retryTimes,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.query_creator.model.RequestCreateStatusBean">
+    update request_create_status
+    set request_id = #{requestId,jdbcType=VARCHAR},
+      request_type = #{requestType,jdbcType=VARCHAR},
+      request_status = #{requestStatus,jdbcType=INTEGER},
+      request_url = #{requestUrl,jdbcType=VARCHAR},
+      request_post_data = #{requestPostData,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      retry_times = #{retryTimes,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
