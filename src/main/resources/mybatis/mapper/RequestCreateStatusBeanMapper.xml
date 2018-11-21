@@ -29,8 +29,9 @@
     from request_create_status
     where request_type = #{request_type,jdbcType=VARCHAR} and request_status = #{request_status,jdbcType=INTEGER}
   </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from request_create_status
     where id = #{id,jdbcType=INTEGER}

@@ -14,10 +14,10 @@ public interface RequestCreateStatusBeanMapper {
 
     RequestCreateStatusBean selectByPrimaryKey(Integer id);
 
-    List<RequestCreateStatusBean> getRequestByTypeAndStatus(@Param("request_type") String requestType, @Param("request_status") Integer status);
-    List<RequestCreateStatusBean> getRequestByStatus(@Param("request_status") Integer status);
-
     int updateByPrimaryKeySelective(RequestCreateStatusBean record);
 
     int updateByPrimaryKey(RequestCreateStatusBean record);
+
+    List<RequestCreateStatusBean> getRequestByTypeAndStatus(@Param("request_type") String requestType, @Param("request_status") Integer status);
+    List<RequestCreateStatusBean> getRequestByStatus(@Param("request_status") Integer status);
 }

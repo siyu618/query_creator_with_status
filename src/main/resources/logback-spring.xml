@@ -3,20 +3,16 @@
 <configuration debug="true" scan="false" scanPeriod="30 seconds">
     <!-- 设置日志输出根目录 -->
     <springProfile name="dev">
-        <property name="log.dir" value="/Users/study/logging/prophet-risk-discover"/>
-        <property name="sq_log.dir" value="/Users/study/logging/security-questionnarie"/>
+        <property name="log.dir" value="/Users/study/logging/query_status"/>
     </springProfile>
     <springProfile name="qa">
-        <property name="log.dir" value="/home/study/logs/prophet-risk-discover"/>
-        <property name="sq_log.dir" value="/home/study/logs/security-questionnarie"/>
+        <property name="log.dir" value="/home/study/logs/query_status"/>
     </springProfile>
     <springProfile name="prod">
-        <property name="log.dir" value="/home/study/logs/prophet-risk-discover"/>
-        <property name="sq_log.dir" value="/home/study/logs/security-questionnarie"/>
+        <property name="log.dir" value="/home/study/logs/query_status"/>
     </springProfile>
     <springProfile name="pre">
-        <property name="log.dir" value="/home/study/logs/prophet-risk-discover"/>
-        <property name="sq_log.dir" value="/home/study/logs/security-questionnarie"/>
+        <property name="log.dir" value="/home/study/logs/query_status"/>
     </springProfile>
     
     <property name="encoding" value="UTF-8"/>
@@ -240,4 +236,25 @@
         <appender-ref ref="sqPublicAppender" />
     </logger>
 
+
+
+    <logger name="com" level="warn" addivity="false">
+        <appender-ref ref="sqWarnAppender"/>
+    </logger>
+
+    <logger name="com" level="error" addivity="false">
+        <appender-ref ref="sqErrorAppender"/>
+    </logger>
+
+    <logger name="com" level="trace" addivity="false">
+        <appender-ref ref="sqTraceAppender"/>
+    </logger>
+
+    <logger name="com" level="debug"  addivity="false">
+        <appender-ref ref="sqDebugAppender" />
+    </logger>
+
+    <logger name="com" level="info"  addivity="false">
+        <appender-ref ref="sqPublicAppender" />
+    </logger>
 </configuration>
