@@ -1,2 +1,0 @@
-[WARN][2018-11-21 15:06:46 448][http-nio-8095-exec-1][c.z.hikari.util.DriverDataSource:68] Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
-[WARN][2018-11-21 15:11:35 262][http-nio-8095-exec-1][c.z.hikari.util.DriverDataSource:68] Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
