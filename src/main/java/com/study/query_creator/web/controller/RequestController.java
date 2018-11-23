@@ -51,7 +51,7 @@ public class RequestController {
     @InvokeLog
     @TimeProfiler
     @ResponseBody
-    @RequestMapping(value = "/add/{requestId}/{requestType}", method = RequestMethod.GET)
+    @RequestMapping(value = "/add/{requestId}/{requestType}", method = RequestMethod.POST)
     public JsonResult add(@PathVariable("requestId") String reqId, @PathVariable("requestType")String requestType, @CommonForm SsoUser ssoUser) {
         Result result = Result.builder().build();
         try {
