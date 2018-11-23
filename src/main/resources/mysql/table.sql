@@ -2,6 +2,8 @@
 CREATE USER 'test'@'localhost' IDENTIFIED BY 'test';
 create database query_status;
 grant all privileges on query_status.* to 'test'@'localhost' ;
+grant all privileges on *.* to 'test'@'localhost' ;
+flush privileges;
 
 CREATE TABLE `request_create_status` (
    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
