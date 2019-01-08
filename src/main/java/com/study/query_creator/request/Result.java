@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
+/**
+ * @author 
+ */
 @Data
 @Builder
 public class Result {
